@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Models;
-
-class Eleves
+use Illuminate\Database\Eloquent\Model;
+class Eleves extends Model
 {
 
+    protected $primaryKey = "id";
     /**
      * The attributes that are mass assignable.
      *

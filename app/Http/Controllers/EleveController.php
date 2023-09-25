@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Eleves;
 
 class EleveController extends Controller
 {
@@ -19,15 +20,32 @@ class EleveController extends Controller
      */
     public function create()
     {
-        //
+        return view('ajoutEleve');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'date_naissance' => 'required',
+            'numero_etudiant' => 'required|unique:eleves',
+            'email' => 'required|email|unique:eleves',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $imagePath = $request->file('image')->store('eleve_images', 'public');
+
+        Eleves::create([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'date_naissance' => $request->date_naissance,
+            'numero_etudiant' => $request->numero_etudiant,
+            'email' => $request->email,
+            'image' => $imagePath,
+        ]);
+
+        return redirect('/')->with('success', 'Élève ajouté avec succès.');
     }
 
     /**

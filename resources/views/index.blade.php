@@ -7,7 +7,9 @@
 </head>
 <body>
     <h1>Liste des élèves</h1>
-    
+    <form action="./ajoutEleve" class="goToAdd">
+        <button type="submit">Ajouter un élève</button>
+    </form>
     <ul id="liste-eleves">
         <li>
             <span>Nom: John</span>
