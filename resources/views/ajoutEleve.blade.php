@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>Formulaire d'ajout d'élève</h1>
-    <form action="{{ route(EleveController.store) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('EleveController.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" required><br><br>
 
