@@ -14,8 +14,8 @@ class Eleves extends Model
     protected $fillable = [
         'nom', 
         'prenom', 
-        'date naissance', 
-        'numéro étudiant',
+        'numero_etudiant', 
+        'numero_etudiant',
         'email',
         'image'
     ];
