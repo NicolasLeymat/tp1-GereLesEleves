@@ -22,3 +22,4 @@ Route::get('/ajoutEleve', function () {
 });
 Route::get('/ajoutEleve/create', [EleveController::class, 'create'])->name('EleveController.create');
 Route::post('/', [EleveController::class, 'store'])->name('EleveController.store');
+Route::resource('eleves', EleveController::class);

@@ -12,7 +12,8 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        $eleves = Eleves::paginate(10); // Paginer les élèves par page (par exemple, 10 élèves par page)
+        return view('eleves.index', compact('eleves'));
     }
 
     /**
@@ -77,6 +78,8 @@ class EleveController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $eleve = Eleves::findOrFail($id);
+        $eleve->delete();
+        return redirect()->route('eleves.index')->with('success', 'Élève supprimé avec succès.');
     }
 }
